@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Отзывы</title>
+        <link rel="stylesheet" href="styles/style.css">
+        <script src="plugins/jquery-3.3.1.js"></script>
+        <script src="ReviewsBox.js"></script>
+        <script>
+            (function($){
+                $(document).ready(function () {
+                    var $reviews1Wrapper = $('#reviews1Wrapper');
+                    var reviews1 = new ReviewsBox('ajax.json', $reviews1Wrapper);
+                    reviews1.loadFromJSON();
+                    reviews1.render($reviews1Wrapper);
+                    
+                    $('#addComment').on('click', function () {
+                        if($('#userName').val() && $('#userMessage').val()){
+                            reviews1.addReview($('#userName').val(), $('#userMessage').val());
+                            $('#userName').val('');
+                            $('#userMessage').val('');
+                            
+                        }
+                    });
+                    $($reviews1Wrapper).on('click', '.moderate', function () {
+                        var _id = parseInt($(this).parent().attr('data-id'));
+                        reviews1.moderateReview(_id);
+                    });
+                    $($reviews1Wrapper).on('click', '.remove', function () {
+                        var _id = parseInt($(this).parent().attr('data-id'));
+                        reviews1.removeReview(_id);
+                    });
+                });
+            })
+            (jQuery);
+        </script>
+    </head>
+    <body>
+        <div class="content">
+            <input id="userName" type="text" placeholder="Имя: Василий"><br>
+            <textarea id="userMessage" cols="30" rows="10" placeholder="Сообщение"></textarea><br>
+            <input id="addComment" type="button" value="Отправить">
+            <div id="reviews1Wrapper">
+
+            </div>
+        </div>
+    </body>
+</html>

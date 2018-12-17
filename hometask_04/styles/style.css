@@ -1,0 +1,80 @@
+html, body{
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background-color: #58626C;
+}
+.tabTask{
+	background-color: #58626C;
+	width: 100%;
+	min-height: 820px;
+}
+.tabs{
+	background-color: #58626C;
+	padding: 40px;
+	font-family: Verdana, sans-serif;
+	margin: 0 auto;
+}
+.tabs .headers{
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+.tabs .headers li{
+	font-size: 1.1em;
+	list-style-type: none;
+	padding: 20px;
+	color: #EEDCA7;
+	background-color: #464A53;
+	float: left;
+}
+.tabs .headers li:first-child{
+	border-radius: 10px 0 0 0;
+}
+.tabs .headers li:last-child{
+	border-radius: 0 10px 0 0;
+}
+.tabs .headers li.active{
+	color: black;
+	background-color: white;
+	
+}
+.tabs .content:not(.active){
+	display: none;
+}
+.tabs .content img{
+	float: left;
+	margin: 2em;
+}
+.tabs .content{
+	background-color: white;
+	width: 800px;
+	padding: 30px;
+	margin-right: 60px;
+	border-radius: 10px;
+	font-size: 1.2em;
+}
+.clearfix{
+	content: "";
+	display: table;
+	clear: both;
+}
+.townTask{
+	background-color: #1D3246;
+	padding: 50px 0;
+	width: 100%;
+	
+}
+#townInput{
+	margin-left: -webkit-calc(50% - 300px);
+	margin-left: -moz-calc(50% - 300px);
+	margin-left: -o-calc(50% - 300px);
+	font-size: 1.2em;
+	color: #221F4B;
+	font-family: Verdana;
+	width: 600px;
+	height: 2rem;
+	outline: none;
+}

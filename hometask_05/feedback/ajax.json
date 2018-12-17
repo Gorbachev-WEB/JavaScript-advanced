@@ -1,0 +1,14 @@
+[
+  {
+    "name" : "Рядовой",
+    "message" : "Первый!",
+    "id" : 1,
+    "verified" : true
+  },
+  {
+    "name" : "Рядовой",
+    "message" : "Второй!",
+    "id" : 2,
+    "verified" : true
+  }
+]

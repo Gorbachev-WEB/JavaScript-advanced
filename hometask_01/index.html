@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta chrset="UTF-8">
+	<title>Test</title>
+	<script>
+		/*
+		function Container(){
+			this.id = '';
+			this.className = ''
+		}
+		
+		Container.prototype.render = function(){
+			var div = document.createElement('div');
+			div.id = this.id;
+			div.classList.add(this.className);
+			
+			return div; 
+		}
+		
+		Container.prototype.remove = function(){
+			var div = document.getElementById(this.id);
+			div.parentNode.removeChild(div);
+		}
+		
+		function Menu(_id, _class, _items){
+			Container.call(this);
+			
+			this.id = _id;
+			this.className = _class;
+			this.items = _items;
+		}
+		
+		Menu.prototype = Object.create(Container.prototype);
+		Menu.prototype.constructor = Menu;
+		
+		Menu.prototype.render = function(){
+			var ul = document.createElement('ul');
+			ul.id = this.id;
+			ul.classList.add(this.className);
+			for(var i=0; i<this.items.length; i++){
+				if(this.items[i] instanceof MenuItem){
+					ul.appendChild(this.items[i].render());
+				}
+			}
+			
+			return ul;
+		}
+		
+		function MenuItem(href, label){
+			Container.call(this);
+			
+			this.href = href;
+			this.label = label;
+		}
+		
+		MenuItem.prototype = Object.create(Container.prototype);
+		MenuItem.prototype.constructor = MenuItem;
+		
+		MenuItem.prototype.render = function(){
+			var li = document.createElement('li');
+			var a = document.createElement('a');
+			a.href = this.href;
+			a.textContent = this.label;
+			li.appendChild(a);
+			
+			return li;
+		}
+		//САМА ГЕНЕРАЦИЯ:
+		window.onload = function(){
+			var item1 = new MenuItem('/', 'Главная');
+			var item2 = new MenuItem('/', 'Каталог');
+			var item3 = new MenuItem('/', 'Контакты');
+			
+			var menu = new Menu('menu', 'menu', [
+				item1, item2, item3
+			]);
+			
+			document.body.appendChild(menu.render());
+		}*/
+		// Другой вариант:
+		function Container(){
+			this.id = '';
+			this.className = '';
+		}
+		
+		Container.prototype.render = function(){
+			var div = document.createElement('div');
+			div.id = this.id;
+			div.classList.add(this.className);
+			
+			return div;
+		}
+		
+		Container.prototype.remove = function(){
+			var div = document.getElementById(this.id);
+			div.parentNode.removeChild(div);
+		}
+		
+		function Menu(_id, _class, _items){
+			Container.call(this);
+			
+			this.id = _id;
+			this.className = _class;
+			this.items = _items;
+		}
+		
+		Menu.prototype = Object.create(Container.prototype);
+		Menu.prototype.constructor = Menu;
+		
+		Menu.prototype.render = function(){
+			var ul = document.createElement('ul');
+			ul.id = this.id;
+			ul.classList.add(this.className);
+			for(var i = 0; i < this.items.length; i++){
+				if(this.items[i] instanceof MenuItem)
+					ul.appendChild(this.items[i].render());
+			}
+			
+			return ul;
+		}
+		
+		function MenuItem(anchor, label, nested){
+			Container.call(this);
+			
+			this.anchor = anchor;
+			this.label = label;
+			this.nested = nested;
+		}
+		MenuItem.prototype = Object.create(Container.prototype);
+		MenuItem.prototype.constructor = MenuItem;
+		MenuItem.prototype.render = function(){
+			var li = document.createElement('li');
+			var a = document.createElement('a');
+			a.href = this.anchor;
+			a.textContent = this.label;
+			li.appendChild(a);
+			if(this.nested instanceof Menu)
+				li.appendChild(this.nested.render());
+			
+			return li;
+		}
+		// rendering
+		window.onload = function(){
+			var childrenItems = [
+								new MenuItem('#','Одежда для малышей'),
+								new MenuItem('#','Одежда для школьников'),
+								new MenuItem('#','Одежда для подростков')
+								];
+			var nestedChildren = new Menu('nestedChildren','nested2', childrenItems);
+			var catalogItems = [
+								new MenuItem('#','Одежда для мужчин'),
+								new MenuItem('#','Одежда для женщин'),
+								new MenuItem('#','Одежда для Детей', nestedChildren)
+								];
+			var nestedCatalog = new Menu('nestedCatalog','nested1', catalogItems);
+			var mainItems = [
+								new MenuItem('#','Главная'),
+								new MenuItem('#','Каталог', nestedCatalog),
+								new MenuItem('#','Контакты')
+							];
+			var mainMenu = new Menu('menu','menu', mainItems);
+			
+			var creator = document.getElementById('menuCreator');
+			var remover = document.getElementById('menuRemover');
+			var parent = document.getElementById('parent');
+			creator.addEventListener('click', function(){
+														parent.appendChild(mainMenu.render())
+														});
+			remover.addEventListener('click', function(){
+														mainMenu.remove()
+														});
+		}
+	</script>
+</head>
+<body>
+<button id="menuCreator">Создать меню</button>
+<button id="menuRemover">Удалить меню</button>
+<div id="parent">
+
+</div>
+
+</body>
+</html>

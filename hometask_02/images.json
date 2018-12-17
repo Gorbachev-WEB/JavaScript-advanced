@@ -1,0 +1,17 @@
+[
+	{
+		"min" : "img/min/1.jpg",
+		"max" : "img/max/1.jpg",
+		"alt" : "Great picture"
+	},
+	{
+		"min" : "img/min/2.jpg",
+		"max" : "img/max/2.jpg",
+		"alt" : "Awesome picture"
+	},
+	{
+		"min" : "img/min/3.jpg",
+		"max" : "img/max/3.jpg",
+		"alt" : "Amazing picture"
+	}
+]

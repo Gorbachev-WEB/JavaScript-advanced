@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <script src="jquery-3.3.1.js"></script>
+    <script src="Good.js"></script>
+    <script src="Basket.js"></script>
+    <script>
+        $(document).ready(function () {
+            //Создаем товары
+            let $goods = $('#goods');
+            let good1 = new Good(123, 'Клавиатура для ПК', 1200);
+            good1.render($goods);
+
+            let good2 = new Good(124, 'Мышь для ПК', 700);
+            good2.render($goods);
+
+            //Создаем корзину
+            let basket = new Basket('basket');
+            basket.render($('#basket_wrapper'));
+
+            //Добавление товара в корзину
+            $('.buy-good').on('click', function () {
+                let idProduct = parseInt($(this).attr('data-id'));
+                let price = parseInt($(this).parent().find('span').text());
+                basket.add(idProduct, price);
+            });
+            $('.remove-good').on('click', function () {
+                let idProduct = parseInt($(this).attr('data-id'));
+                let price = parseInt($(this).parent().find('span').text());
+                basket.remove(idProduct, price);
+            });
+        });
+    </script>
+    <style>
+        .good {
+            border: 1px solid darkgreen;
+            background-color: lightgreen;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            min-width: 210px;
+        }
+    </style>
+</head>
+<body>
+<div id="basket_wrapper"></div>
+<hr>
+<div id="goods"></div>
+</body>
+</html>

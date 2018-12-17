@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0;
+}
+.content{
+    width: 760px;
+}
+.review{
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+.review.unverified{
+    background-color: antiquewhite;
+    box-shadow: 0 0 1px 1px brown;
+}
+.review.verified{
+    background-color: greenyellow;
+    box-shadow: 0 0 1px 1px green;
+}
+#addComment{
+    width: 740px;
+    height: 35px;
+    margin: 10px;
+    padding: 7px 5px;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: sans-serif;
+    border: 1px solid #bbbcc0;
+}
+#userName{
+    width: 740px;
+    height: 35px;
+    margin: 10px;
+    padding: 7px 5px;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: sans-serif;
+    border: 1px solid #bbbcc0;
+}
+#userMessage{
+    width: 740px;
+    height: 100px;
+    margin: 10px;
+    padding: 7px 5px;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: sans-serif;
+    border: 1px solid #bbbcc0;
+
+    resize: none;
+}
+.review input{
+    width: 350px;
+    height: 35px;
+    margin: 10px;
+    padding: 7px 5px;
+    border-radius: 4px;
+    outline: none;
+    font-weight: 300;
+    font-size: 18px;
+    font-family: sans-serif;
+    border: 1px solid #bbbcc0;
+}
